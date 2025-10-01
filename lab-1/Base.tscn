@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4qslk87u1iv3"]
+
+[ext_resource type="Script" uid="uid://c3c7yg6xhsrsa" path="res://base.gd" id="1_nfj5t"]
+[ext_resource type="AudioStream" uid="uid://bc0528d7wgglw" path="res://Assets/Mario_Coin.mp3" id="2_b56jl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65yaf"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_nfj5t")
+
+[node name="First_Base" type="Polygon2D" parent="."]
+rotation = 0.7853982
+scale = Vector2(0.4, 0.4)
+polygon = PackedVector2Array(700, -700, 750, -700, 750, -650, 700, -650)
+
+[node name="Mario" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_b56jl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(396.00006, 14.000008)
+rotation = 0.7853982
+shape = SubResource("RectangleShape2D_65yaf")

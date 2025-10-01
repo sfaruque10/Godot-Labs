@@ -1,0 +1,136 @@
+[gd_scene load_steps=11 format=3 uid="uid://c87xdatr6w5w6"]
+
+[ext_resource type="Texture2D" uid="uid://dh35aa70tp4gy" path="res://Assets/Starling_Marte.png" id="1_0cutk"]
+[ext_resource type="PackedScene" uid="uid://b4qslk87u1iv3" path="res://Base.tscn" id="1_ujqnb"]
+[ext_resource type="Script" uid="uid://b5i26qa5d8cak" path="res://starling_marte.gd" id="3_srqns"]
+[ext_resource type="PackedScene" uid="uid://dfl3jcpmr7v1w" path="res://Phillies.tscn" id="4_srqns"]
+[ext_resource type="PackedScene" uid="uid://wpc8861k40hh" path="res://score.tscn" id="5_vm625"]
+[ext_resource type="AudioStream" uid="uid://buwogrm6axqav" path="res://Assets/Meet_the_Mets.mp3" id="7_c2tsg"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_srqns"]
+a = Vector2(-2.4555273, -402.51917)
+b = Vector2(174.95966, -222.52399)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vm625"]
+a = Vector2(-2.2322972, -50.849262)
+b = Vector2(175.71486, -227.59865)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gj8yl"]
+a = Vector2(2.7691453, -49.98543)
+b = Vector2(-176.21834, -227.34491)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_c2tsg"]
+a = Vector2(4.2413654, -401.39417)
+b = Vector2(-178.23227, -220.49411)
+
+[node name="Field" type="Polygon2D"]
+scale = Vector2(4.992168, 4.9529614)
+color = Color(0.06636626, 0.34279284, 0.10980085, 1)
+polygon = PackedVector2Array(0, 0, 200, -200, 0, -400, -200, -200)
+uv = PackedVector2Array(-204.70001, -219.06, -204.70001, -219.56, -208.20001, -222.06, -140.70001, -267.06, -120.20001, -182.56, -10.700012, -196.06, 57.299988, -258.56, 153.79999, -204.56, 47.299988, -158.06)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -3
+position = Vector2(-45.471226, 5.4512844)
+color = Color(0.36078432, 0.5568628, 0.45490196, 1)
+polygon = PackedVector2Array(-2.9065032, 2.685384, -400.61304, 1.7088808, -398.19095, -437.22937, 458.25867, -432.83508, 462.134, 0.9765033)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -200.83072)
+
+[node name="White_Lines" type="Line2D" parent="."]
+position = Vector2(7.751145, 0)
+points = PackedVector2Array(-7.304685, -53.54922, -181.20033, -224.55385, -6.200915, -398.4375, 165.19456, -224.55385, -7.9743743, -52.874233)
+width = 3.0
+
+[node name="Dirt" type="Polygon2D" parent="."]
+position = Vector2(0, -54.68698)
+scale = Vector2(0.56976026, 0.5697603)
+color = Color(0.47683287, 0.3294352, 0.18626508, 1)
+polygon = PackedVector2Array(0, 0, 200, -200, 0, -400, -200, -200)
+uv = PackedVector2Array(-204.70001, -219.06, -204.70001, -219.56, -208.20001, -222.06, -140.70001, -267.06, -120.20001, -182.56, -10.700012, -196.06, 57.299988, -258.56, 153.79999, -204.56, 47.299988, -158.06)
+
+[node name="Infield" type="Polygon2D" parent="."]
+position = Vector2(-79.02333, -4.724931)
+scale = Vector2(0.7929668, 0.78673935)
+color = Color(0.06636626, 0.34279284, 0.10980085, 1)
+polygon = PackedVector2Array(100, -100, 200, -200, 100, -300, 0, -200)
+uv = PackedVector2Array(-204.70001, -219.06, -204.70001, -219.56, -208.20001, -222.06, -140.70001, -267.06, -120.20001, -182.56, -10.700012, -196.06, 57.299988, -258.56, 153.79999, -204.56, 47.299988, -158.06)
+
+[node name="First_Base" parent="Infield" instance=ExtResource("1_ujqnb")]
+position = Vector2(-210.19214, -214.27022)
+
+[node name="Second_Base" parent="Infield" instance=ExtResource("1_ujqnb")]
+position = Vector2(-295.9479, -300.4452)
+
+[node name="Third_Base" parent="Infield" instance=ExtResource("1_ujqnb")]
+position = Vector2(-381.62408, -214.27022)
+
+[node name="Home_Plate" parent="Infield" instance=ExtResource("1_ujqnb")]
+position = Vector2(-296.15683, -128.41263)
+
+[node name="StarlingMarte" type="CharacterBody2D" parent="." groups=["Player"]]
+position = Vector2(0, -70)
+scale = Vector2(0.02260751, 0.022786465)
+collision_mask = 6
+script = ExtResource("3_srqns")
+
+[node name="Marte_Icon" type="Sprite2D" parent="StarlingMarte"]
+position = Vector2(-9.8741455, 9.873875)
+texture = ExtResource("1_0cutk")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StarlingMarte"]
+position = Vector2(-29.622314, 148.1117)
+polygon = PackedVector2Array(-276.00604, 101.41919, -198.0592, 45.74292, -120.11243, 12.337158, -97.84192, 1.2019043, -97.84192, -43.33911, -108.97717, -76.74487, -120.11243, -121.28589, -142.38293, -176.96216, -120.11243, -176.96216, -120.11243, -199.23267, -142.38293, -221.50317, -131.24768, -243.77368, -120.11243, -254.90894, -120.11243, -310.5852, -97.84192, -343.99097, -64.4361, -366.26147, -19.89508, -377.39673, 13.510681, -377.39673, 69.18695, -355.12622, 91.45752, -343.99097, 124.86328, -321.72046, 124.86328, -288.3147, 124.86328, -254.90894, 135.99854, -243.77368, 124.86328, -210.36792, 124.86328, -188.09741, 135.99854, -165.8269, 124.86328, -121.28589, 113.72803, -87.88013, 102.59277, -43.33911, 102.59277, -9.93335, 147.13379, 12.337158, 258.4864, 68.01343, 314.16266, 112.55469, 314.16266, 168.23096, -276.00604, 168.23096)
+
+[node name="Phillies_First_Base" parent="." instance=ExtResource("4_srqns")]
+position = Vector2(53.575165, -167.62244)
+
+[node name="Phillies_Catcher" parent="." instance=ExtResource("4_srqns")]
+position = Vector2(0.503481, -94.896194)
+
+[node name="Phillies_Second_Base" parent="." instance=ExtResource("4_srqns")]
+position = Vector2(12.500916, -236.02051)
+
+[node name="Phillies_Third_Base" parent="." instance=ExtResource("4_srqns")]
+position = Vector2(-78.57672, -164.0188)
+
+[node name="Phillies_Short_Stop" parent="." instance=ExtResource("4_srqns")]
+position = Vector2(-51.33246, -212.64941)
+
+[node name="Phillies_Left_Field" parent="." instance=ExtResource("4_srqns")]
+position = Vector2(-90, -260)
+
+[node name="Phillies_Center_Field" parent="." instance=ExtResource("4_srqns")]
+position = Vector2(-2.9020004, -319.27036)
+
+[node name="Phillies_Right_Field" parent="." instance=ExtResource("4_srqns")]
+position = Vector2(35, -260)
+
+[node name="Umpire" parent="." instance=ExtResource("4_srqns")]
+position = Vector2(-0.2517395, -162.64297)
+
+[node name="Barriers" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="Outfield_Barrier_Top_Right" type="CollisionShape2D" parent="Barriers"]
+scale = Vector2(0.9999999, 1)
+shape = SubResource("SegmentShape2D_srqns")
+
+[node name="Foul_Line_Bottom_Right" type="CollisionShape2D" parent="Barriers"]
+shape = SubResource("SegmentShape2D_vm625")
+
+[node name="Foul_Line_Bottom_Left" type="CollisionShape2D" parent="Barriers"]
+shape = SubResource("SegmentShape2D_gj8yl")
+
+[node name="Outfield_Barrier_Top_Left" type="CollisionShape2D" parent="Barriers"]
+scale = Vector2(0.99999994, 1)
+shape = SubResource("SegmentShape2D_c2tsg")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_vm625")]
+
+[node name="Meet_the_Mets" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_c2tsg")
+autoplay = true
+parameters/looping = true

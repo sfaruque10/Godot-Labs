@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://wpc8861k40hh"]
+
+[ext_resource type="Script" uid="uid://bwaxk0yji3rop" path="res://score.gd" id="1_t1x8i"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 399.0
+offset_top = 386.0
+offset_right = 460.0
+offset_bottom = 409.0
+scale = Vector2(2, 2)
+text = "Score: 0"
+script = ExtResource("1_t1x8i")
+
+[node name="Node2D" type="Node2D" parent="."]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfl3jcpmr7v1w"]
+
+[ext_resource type="Texture2D" uid="uid://cju44drf15iq1" path="res://Assets/Phillies.png" id="1_7723l"]
+[ext_resource type="Script" uid="uid://c4yuyyu11fk52" path="res://phillies.gd" id="1_tlsea"]
+[ext_resource type="AudioStream" uid="uid://b7782m756he5a" path="res://Assets/Microsoft_Windows_XP_Error.mp3" id="3_efitx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7723l"]
+
+[node name="Phillies" type="CharacterBody2D" groups=["Philly"]]
+scale = Vector2(0.075, 0.075)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_tlsea")
+
+[node name="Phillies_Logo" type="Sprite2D" parent="."]
+texture = ExtResource("1_7723l")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Error_Sound" type="AudioStreamPlayer2D" parent="Area2D"]
+position = Vector2(-13.333335, 0)
+scale = Vector2(1.0000001, 1.0000001)
+stream = ExtResource("3_efitx")
+volume_db = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(11.200001, 11.200001)
+shape = SubResource("RectangleShape2D_7723l")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(11, 11)
+shape = SubResource("RectangleShape2D_7723l")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
