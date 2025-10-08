@@ -1,0 +1,1 @@
+Something is in the air! No, not just the people, a disease! However, some individuals have found a cure. The infected are trying to spread this disease, and those with a cure are trying to heal everyone. Let us see if everyone can beat the disease or if everyone gets infected.
