@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7ex1wvpwlbms"]
+
+[ext_resource type="Script" uid="uid://dx4dnfuvfyg2e" path="res://Main.gd" id="1_iuuax"]
+[ext_resource type="PackedScene" uid="uid://c305eup3iexl" path="res://Person.tscn" id="1_nxnij"]
+[ext_resource type="Texture2D" uid="uid://cfrq3b8ltyrd8" path="res://Assets/Background.jpeg" id="1_y1v4a"]
+
+[node name="Disease" type="Node2D"]
+script = ExtResource("1_iuuax")
+person_scene = ExtResource("1_nxnij")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -2622.0
+offset_top = -1375.0001
+offset_right = -2098.2002
+offset_bottom = -1095.4001
+scale = Vector2(10, 10)
+texture = ExtResource("1_y1v4a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="WinningConditionTimer" type="Timer" parent="."]
+
+[node name="WinnerLayer" type="CanvasLayer" parent="."]
+
+[node name="Result" type="Label" parent="WinnerLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+
+[connection signal="timeout" from="WinningConditionTimer" to="." method="_on_timer_timeout"]

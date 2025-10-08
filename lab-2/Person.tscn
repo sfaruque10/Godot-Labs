@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c305eup3iexl"]
+
+[ext_resource type="Texture2D" uid="uid://cnotua70albmd" path="res://Assets/Person1.png" id="1_0dfyj"]
+[ext_resource type="Script" uid="uid://b0q6uemmjyr47" path="res://Person.gd" id="1_hopiu"]
+
+[node name="Person" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_hopiu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.22426726, 0.22426729)
+texture = ExtResource("1_0dfyj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1.5, 2.75)
+polygon = PackedVector2Array(-11.5, 76.25, -24, 74.75, -21, 68.75, -21, 62.25, -16.5, 35.75, -16.5, 26.75, -24, 17.25, -26, -2.25, -21, -21.25, -16.5, -34.75, -14.5, -41.75, -20.5, -52.25, -20.5, -59.75, -13.5, -68.25, -11, -72.75, -5.5, -75.25, 5.5, -75.75, 14, -75.75, 15, -71.75, 19.5, -66.75, 21, -51.25, 14.5, -41.75, 17, -31.25, 22, -7.75, 25.5, 6.75, 26.5, 19.75, 24, 24.75, 17.5, 26.25, 18, 40.25, 21.5, 65.25, 27.5, 74.75, 6, 74.25, 6.5, 60.25, 6.5, 45.25, 6.5, 30.25, 1, 25.75, -4.5, 39.25, -4.5, 55.25, -5, 67.75)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

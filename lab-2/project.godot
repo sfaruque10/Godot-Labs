@@ -1,0 +1,32 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Lab 2"
+run/main_scene="uid://b7ex1wvpwlbms"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+config/icon="res://Assets/icon.svg"
+
+[debug]
+
+settings/stretch/mode="canvas_items"
+
+[display]
+
+window/size/viewport_width=2500
+window/size/viewport_height=1500
+window/size/mode=2
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
