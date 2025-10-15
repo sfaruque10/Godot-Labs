@@ -1,3 +1,6 @@
+# Game Description
+Oh no! You are stuck in the world with a bunch of monsters and other things. The only thing you have left to do is collect coins, but at a cost - your life. Or at least you think. You are allowed to move using the left and right arrow keys and jump or double jump using the space bar. Beware!
+
 # Alexander’s Pattern Format
 
 Pattern: Coin Collection Component
