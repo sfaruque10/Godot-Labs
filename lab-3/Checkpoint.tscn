@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx8f8b5erj2q8"]
+
+[ext_resource type="Script" uid="uid://3rhj7fveh0o4" path="res://Checkpoint.gd" id="1_yt2a0"]
+[ext_resource type="Texture2D" uid="uid://b5fdpuuk4bkw4" path="res://Assets/Skull.png" id="2_j5qqt"]
+[ext_resource type="AudioStream" uid="uid://bcd2gfwvf543u" path="res://Assets/sonic_checkpoint.mp3" id="3_j5qqt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6gyp"]
+size = Vector2(484, 452)
+
+[node name="Checkpoint" type="Area2D" node_paths=PackedStringArray("respawn_position")]
+z_index = -1
+collision_layer = 2
+script = ExtResource("1_yt2a0")
+respawn_position = NodePath("Marker2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j5qqt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_m6gyp")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="SonicCheckpoint" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_j5qqt")
+volume_db = -5.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

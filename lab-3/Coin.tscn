@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgic08ujiva73"]
+
+[ext_resource type="Texture2D" uid="uid://c2hbq22eci5v2" path="res://Assets/Coin.png" id="1_h5dih"]
+[ext_resource type="Script" uid="uid://c4nfmm6t4r6c6" path="res://Coin.gd" id="1_ou7jl"]
+[ext_resource type="AudioStream" uid="uid://bhv4bnth7hs0s" path="res://Assets/super-mario-coin-sound.mp3" id="3_ufda5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ou7jl"]
+radius = 403.1898
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_ou7jl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.6466091, 0.37431028, 0.12408469, 1)
+texture = ExtResource("1_h5dih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ou7jl")
+
+[node name="SuperMarioCoinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ufda5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

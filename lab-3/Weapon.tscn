@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://i00a4ctknfk0"]
+
+[ext_resource type="Texture2D" uid="uid://c60luau3cruki" path="res://Assets/kenney_tiny-ski/Tiles/tile_0057.png" id="1_2og4f"]
+[ext_resource type="Script" uid="uid://dthhrn1gyjdcc" path="res://Weapon.gd" id="1_jkvh0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2og4f"]
+size = Vector2(13, 16)
+
+[node name="Weapon" type="Area2D" groups=["Weapon"]]
+scale = Vector2(4, 4)
+collision_layer = 2
+script = ExtResource("1_jkvh0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2og4f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_2og4f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3ck1iebgubf"]
+
+[ext_resource type="Script" uid="uid://csllapofehick" path="res://Background.gd" id="1_dpw2a"]
+[ext_resource type="Texture2D" uid="uid://dmoqem72v4v3l" path="res://Assets/HalloweenBackground.jpg" id="1_l3thc"]
+[ext_resource type="AudioStream" uid="uid://bbkyya8wms7w6" path="res://Assets/steve_old_hurt_sound.mp3" id="3_jqsg2"]
+[ext_resource type="AudioStream" uid="uid://c7n2v8nsnskot" path="res://Assets/grievous_cough.mp3" id="4_8xc84"]
+[ext_resource type="AudioStream" uid="uid://b3a8kqhc7wr7g" path="res://Assets/Blaster.mp3" id="5_ynkqc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3thc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpw2a"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqsg2"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="Background" type="ParallaxBackground"]
+
+[node name="Parallax2D" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(3510, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture_filter = 1
+position = Vector2(1755, 780)
+scale = Vector2(2, 2)
+texture = ExtResource("1_l3thc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Parallax2D"]
+script = ExtResource("1_dpw2a")
+
+[node name="Health" type="Label" parent="Parallax2D/CanvasLayer"]
+offset_left = 10.0
+offset_top = 30.0
+offset_right = 185.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_l3thc")
+text = "Health: 100"
+
+[node name="Score" type="Label" parent="Parallax2D/CanvasLayer"]
+offset_left = 10.0
+offset_top = 75.0
+offset_right = 131.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 32
+text = "Score: 0"
+
+[node name="HealthBar" type="ProgressBar" parent="Parallax2D/CanvasLayer"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 281.0
+offset_bottom = 37.0
+theme_override_styles/background = SubResource("StyleBoxFlat_dpw2a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jqsg2")
+show_percentage = false
+
+[node name="SteveOldHurtSound" type="AudioStreamPlayer" parent="Parallax2D/CanvasLayer"]
+stream = ExtResource("3_jqsg2")
+
+[node name="GrievousCough" type="AudioStreamPlayer" parent="Parallax2D/CanvasLayer"]
+stream = ExtResource("4_8xc84")
+
+[node name="Blaster" type="AudioStreamPlayer" parent="Parallax2D/CanvasLayer"]
+stream = ExtResource("5_ynkqc")
