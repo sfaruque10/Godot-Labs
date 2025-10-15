@@ -2,7 +2,6 @@ extends Area2D
 
 var speed = 800
 var damage = 30
-#var direction = Vector2.RIGHT
 
 func _ready() -> void:
 	await get_tree().create_timer(2).timeout

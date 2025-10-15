@@ -9,18 +9,18 @@ Pattern: Coin Collection Component
 -	Solution: Keep track of the number of coins collected. After all coins are collected, respawn them with a slight delay so the player does not automatically collect a coin when they respawn. 
 -	Example:
 
-        func _on_respawn_signal():
-            is_collected = false # set to not collected
-            $Sprite2D.show()
-            
-        if coins_collected_this_cycle >= respawn_count_needed:
-                respawn_signal.emit()
-                
-                coins_collected_this_cycle = 0	
-        
-        is_collected = false # set to not collected
-        $Sprite2D.show()
-        $CollisionShape2D.set_deferred("disabled", false) 
+		func _on_respawn_signal():
+			is_collected = false # set to not collected
+			$Sprite2D.show()
+			
+		if coins_collected_this_cycle >= respawn_count_needed:
+				respawn_signal.emit()
+				
+				coins_collected_this_cycle = 0	
+		
+		is_collected = false # set to not collected
+		$Sprite2D.show()
+		$CollisionShape2D.set_deferred("disabled", false) 
 
 Pattern: Checkpoint Component
 -	Context: Needed a solution for dying and keeping track of player location. Could have kept the player at the start point when they die, but that was to difficult.
@@ -28,15 +28,15 @@ Pattern: Checkpoint Component
 -	Solution: Created a global variable to check if the player activated the checkpoint. Used a timer to check if the variable changed. If the global variable was not equal to self, it would unmark the checkpoint.
 -	Example:
 
-        func activate():
-            if Global.checkpoint != self:
-                self.modulate = Color(0.115, 0.115, 0.115, 1.0)
-                $SonicCheckpoint.play()
-                Global.checkpoint = self
+		func activate():
+			if Global.checkpoint != self:
+				self.modulate = Color(0.115, 0.115, 0.115, 1.0)
+				$SonicCheckpoint.play()
+				Global.checkpoint = self
 
-        func _on_timer_timeout() -> void:
-            if Global.checkpoint != self: 
-                self.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		func _on_timer_timeout() -> void:
+			if Global.checkpoint != self: 
+				self.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 Pattern: Signal Observer Pattern
 -	Context: Have signals in place to detect score and health of the player.
@@ -44,23 +44,23 @@ Pattern: Signal Observer Pattern
 -	Solution: Created signals to keep track of health and score changed. In addition, took the node that attacked the user to indicate what sound should be played. Then used conditions to determine which sound to play based on the hazard type. 
 -	Example:
 
-        func add_score(amount):
-            score += amount
-            coins_collected_this_cycle += 1
-            score_updated.emit(score)
+		func add_score(amount):
+			score += amount
+			coins_collected_this_cycle += 1
+			score_updated.emit(score)
 
-        func decrease_health(amount, node_name):
-            health -= amount
-            name_of_node = node_name
-            health_signal.emit(health, node_name)
+		func decrease_health(amount, node_name):
+			health -= amount
+			name_of_node = node_name
+			health_signal.emit(health, node_name)
 
-        if new_health != 100 and new_health > 0: 
-            if node_name.begins_with("Poison"):
-                $GrievousCough.play()
-            elif node_name == "Weapon":
-                $Blaster.play()
-            else:
-                $SteveOldHurtSound.play()
+		if new_health != 100 and new_health > 0: 
+			if node_name.begins_with("Poison"):
+				$GrievousCough.play()
+			elif node_name == "Weapon":
+				$Blaster.play()
+			else:
+				$SteveOldHurtSound.play()
  
 # System Design
 
